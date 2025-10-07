@@ -4,6 +4,7 @@ namespace AOC._2024.Components.Pages;
 
 public partial class HistorianHysteria : ComponentBase
 {
+    private bool disabled = false;
     private int totalDistance = 0;
     private List<int> leftList = [];
     private List<int> rightList = [];
@@ -29,6 +30,7 @@ public partial class HistorianHysteria : ComponentBase
         for (var i = 0; i < leftList.Count; i++)
         {
             totalDistance += Math.Abs(rightList[i] - leftList[i]);
+            disabled = true;
         }
     }
 }

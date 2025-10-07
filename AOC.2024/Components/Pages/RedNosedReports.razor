@@ -1,8 +1,43 @@
 ﻿@page "/day2"
-<PageTitle>Red-Nosed Reports</PageTitle>
 
-<MudText Typo="Typo.h3" GutterBottom="true">Red-Nosed Reports</MudText>
+<MudContainer Class="d-flex">
+    <video autoplay loop muted style="display:@(starCollected ? "block" : "none")">
+        <source src="/videos/star.mp4" type="video/mp4" />
+    </video>
+    <PageTitle>Red-Nosed Reports</PageTitle>
 
-<MudText Typo="Typo.body1" Class="mb-4">Safe Reports: @safeReports</MudText>
+    @if (starCollected)
+    {
 
-<MudButton Color="Color.Primary" Variant="Variant.Filled" @onclick="FindSafeReports">Find safe reports</MudButton>
+        <MudContainer Class="d-flex">
+            <MudPaper Class="pa-4 ma-20">
+                <MudContainer Class="d-flex">
+                    <MudText Typo="Typo.body1" Class="mb-4">Safe Reports: @safeReports</MudText>
+                    <MudIcon Icon="@Icons.Material.Filled.Star" Color="Color.Warning"></MudIcon>
+                </MudContainer>
+            </MudPaper>
+        </MudContainer>
+    }
+    else
+    {
+        <MudContainer Class="d-flex justify-center align-center" Style="height:100vh;">
+
+            <MudPaper Class="pa-4">
+                <MudText Typo="Typo.h3" GutterBottom="true">Red-Nosed Reports</MudText>
+                <MudButton Color="Color.Primary" Variant="Variant.Filled" @onclick="FindSafeReports">
+                    Find safe reports
+                </MudButton>
+            </MudPaper>
+        </MudContainer>
+    }
+</MudContainer>
+
+<style>
+    video {
+        object-fit: cover;
+        width: 100%;
+        height: 110%;
+        position: fixed;
+        z-index: -1;
+    }
+</style>

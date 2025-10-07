@@ -5,6 +5,7 @@ namespace AOC._2024.Components.Pages;
 public partial class RedNosedReports : ComponentBase
 {
     private int safeReports = 0;
+    private bool starCollected = false;
 
     private void FindSafeReports()
     {
@@ -32,5 +33,6 @@ public partial class RedNosedReports : ComponentBase
                 safeReports++;
             }
         }
+        starCollected = true;
     }
 }

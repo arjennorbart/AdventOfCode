@@ -1,9 +1,32 @@
 ﻿@page "/day1"
 
-<PageTitle>Historian Hysteria</PageTitle>
+<MudContainer Class="d-flex">
+    <video src="/videos/searching.mp4" autoPlay loop muted/>
+    <PageTitle>Historian Hysteria</PageTitle>
+    <MudPaper Class="pa-4 ma-4">
 
-<MudText Typo="Typo.h3" GutterBottom="true">Historian Hysteria</MudText>
+        <MudText Typo="Typo.h3" GutterBottom="true">Historian Hysteria</MudText>
 
-<MudText Typo="Typo.body1" Class="mb-4">Total Distance: @totalDistance</MudText>
+        <MudContainer Class="d-flex">
+            <MudText Typo="Typo.body1" Class="mb-4">Total Distance: @totalDistance</MudText>
+            @if (disabled)
+            {
+                <MudIcon Icon="@Icons.Material.Filled.Star" Color="Color.Warning"></MudIcon>
+            }
+        </MudContainer>
 
-<MudButton Color="Color.Primary" Variant="Variant.Filled" @onclick="CalculateDistance">Calculate Total Distance</MudButton>
+        <MudButton Color="Color.Primary" Variant="Variant.Outlined" @onclick="CalculateDistance" Disabled="@disabled">
+            Calculate Total Distance
+        </MudButton>
+    </MudPaper>
+</MudContainer>
+
+<style>
+    video {
+        object-fit: cover;
+        width: 100%;
+        height: 110%;
+        position: fixed;
+        z-index: -1;
+    }
+</style>
